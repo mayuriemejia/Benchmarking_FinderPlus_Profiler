@@ -1,0 +1,33 @@
+# Nextflow work directory (archivos temporales enormes)
+work/
+
+# Reads crudos y trimados (archivos pesados, van a SRA/repositorio de datos)
+amr_pipeline/01_raw_reads/
+amr_pipeline/01b_qc/*.fastq.gz
+
+# Base de datos AMRFinder (descargable, no va en el repo)
+amrfinderplus_db/
+amrfinder_db_clean/
+amr_pipeline/04_amrfinder/db/
+
+# Archivos de ensamblado y anotación (outputs, se regeneran)
+amr_pipeline/02_assembly/
+amr_pipeline/03_annotation/
+
+# Resultados AMR y reportes (outputs)
+amr_pipeline/04_amrfinder/*.tsv
+amr_pipeline/05_report/*.xlsx
+
+# Pipeline info logs
+amr_pipeline/pipeline_info/
+
+# Carpetas vacías de muestras individuales
+amr_pipeline/granja_01/
+amr_pipeline/retail_01/
+amr_pipeline/retail_02/
+amr_pipeline/slaughter_01/
+amr_pipeline/slaughter_02/
+
+# QC reports HTML/JSON (opcionales, puedes comentar si los quieres)
+amr_pipeline/01b_qc/*.html
+amr_pipeline/01b_qc/*.json

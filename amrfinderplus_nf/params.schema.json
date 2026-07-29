@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AMR pipeline parameters",
+  "type": "object",
+  "properties": {
+    "samplesheet": {
+      "type": "string",
+      "description": "Ruta al archivo samplesheet en formato TSV o CSV."
+    },
+    "outdir": {
+      "type": "string",
+      "description": "Output directory for published results."
+    },
+    "threads": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Threads/CPUs to use for tools that support it."
+    },
+    "mem_gb": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Memory (GB) passed to SPAdes."
+    },
+    "organism": {
+      "type": "string",
+      "description": "Organism string passed to AMRFinderPlus."
+    },
+    "ncbi_dir": {
+      "type": ["string", "null"],
+      "description": "Optional local .ncbi directory to mount into the SRA container."
+    },
+    "img_sra": { "type": "string" },
+    "img_fastp": { "type": "string" },
+    "img_spades": { "type": "string" },
+    "img_prokka": { "type": "string" },
+    "img_amr": { "type": "string" },
+    "img_python": { "type": "string" }
+  },
+  "required": ["samplesheet", "outdir", "threads", "mem_gb", "organism"]
+}

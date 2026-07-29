@@ -1,0 +1,75 @@
+# ============================================================
+# ESTRATEGIA: lista blanca. Se ignora TODO por defecto, y solo
+# se permite explícitamente lo que sí debe ir al repositorio.
+# ============================================================
+
+# 1. Ignorar todo
+*
+
+# 2. Permitir explorar todos los directorios (necesario para que
+#    las excepciones de abajo puedan aplicarse dentro de subcarpetas)
+!*/
+
+# 3. Archivos en la raíz que sí queremos
+!/.gitignore
+!/README.md
+!/main.nf
+!/nextflow.config
+
+# 4. Pipeline principal
+!/modules/
+!/modules/**
+
+# 5. Scripts de bin/ -- SOLO los que corrieron en el pipeline final
+!/bin/
+!/bin/eval_benchmark.py
+!/bin/compute_specificity.py
+!/bin/analysis_wilcoxon_fdr.R
+!/bin/summarize_metrics.py
+!/bin/build_master_truthset.sh
+
+# 6. Preparación de genomas -- SOLO los scripts, no resultados
+!/genomas/
+!/genomas/scripts_clean/
+!/genomas/scripts_clean/**
+
+# 7. Subworkflows reutilizados (código completo, sin datos sueltos)
+!/amrfinderplus_nf/
+!/amrfinderplus_nf/**
+!/amrprofiler_nf/
+!/amrprofiler_nf/**
+!/insilicoseq/
+!/insilicoseq/**
+
+# 8. Documentación
+!/docs/
+!/docs/**
+
+# ------------------------------------------------------------
+# Re-excluir archivos de datos/resultados sueltos que se cuelan
+# DENTRO de las carpetas permitidas arriba (ej. samplesheets con
+# rutas de servidor, resultados de prueba, backups puntuales).
+# ------------------------------------------------------------
+/amrfinderplus_nf/samplesheet_sim3.tsv
+/amrprofiler_nf/samplesheet_sim3_contigs.tsv
+
+# Basura estándar (por si acaso, aunque la lista blanca ya cubre esto)
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.nextflow.log*
+.nextflow/
+
+# ------------------------------------------------------------
+# Limpieza fina: backups y binarios que se colaron dentro de
+# carpetas permitidas arriba
+# ------------------------------------------------------------
+*.bak
+*.bak[0-9]
+*.bak_*
+*.tar
+
+# Script nunca ejecutado (sin carpeta output/ generada), header
+# referencia una muestra individual ajena al diseño ds1-ds4
+/amrprofiler_nf/graficos/

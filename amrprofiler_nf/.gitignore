@@ -1,0 +1,27 @@
+# Nextflow work directory
+work/
+
+# Reads crudos y trimados
+results/01_raw_reads/
+results/02_qc/*.fastq.gz
+results/granja_01/
+results/retail_01/
+results/retail_02/
+results/slaughter_01/
+results/slaughter_02/
+
+# Base de datos AMRProfiler (pesada y descargable)
+amrprofiler_db/
+
+# Outputs del pipeline (se regeneran)
+results/03_assembly/
+results/04_amrprofiler/
+results/05_report/
+results/trace/
+
+# QC reports (opcional, comenta si los quieres subir)
+results/02_qc/*.html
+results/02_qc/*.json
+
+# Outputs de gráficos
+graficos/output/
